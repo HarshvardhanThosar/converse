@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Converse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Converse is an OpenSource Chat Application built with React, Firebase and Redux.
 
-## Available Scripts
+It provides a headstart to create your own chat application.
 
-In the project directory, you can run:
+## Steps to create your chat application with Converse
 
-### `npm start`
+### 1. Download the complete project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Download the complete project and open it in your IDE of choice.
+Then open the terminal section of IDE and enter either of the following lines and hit "enter".
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+npm install
+```
 
-### `npm test`
+_or_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn install
+```
 
-### `npm run build`
+the above line would install all the required node modules and packages for this project to run.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Create _.env.local_ file on the **root** directory of the downloaded project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure to create _.env.locale_ file before trying to run the application. This is to link the project with your Firebase project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Copy the following lines and paste it inside the file.
 
-### `npm run eject`
+```
+REACT_APP_FIREBASE_API_KEY = REPLACE THIS COMMENT WITH YOUR FIREBASE API KEY
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+REACT_APP_FIREBASE_AUTH_DOMAIN = REPLACE THIS COMMENT WITH YOUR FIREBASE AUTH DOMAIN
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+REACT_APP_FIREBASE_PROJECT_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE PROJECT ID
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+REACT_APP_FIREBASE_STORAGE_BUCKET = REPLACE THIS COMMENT WITH YOUR FIREBASE STORAGE BUCKET
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE MESSAGING SENDER ID
 
-## Learn More
+REACT_APP_FIREBASE_APP_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE APP ID
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+REACT_APP_FIREBASE_MEASUREMENT_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE MEASUREMENT ID
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Add your firebase porject's configuration onto the right hand side of the '=' in the above lines.
 
-### Code Splitting
+### 3. Setup is complete
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+With the above to steps done correctly, you are good to go with running your own converse chat application.
 
-### Analyzing the Bundle Size
+However,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To really make it your own, I recommend you to add your personal touch and flavour to the styling or the graphic elements.

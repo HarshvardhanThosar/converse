@@ -1,0 +1,110 @@
+@font-face {
+  src: url(../fonts/Product-Sans/Product-Sans-Regular.ttf);
+  font-family: Product-Sans;
+}
+
+section.hero {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sub--hero {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.signin--section {
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  padding: 0 50px 10px;
+  padding-bottom: 40px;
+}
+
+.explore--section {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.profile--section {
+  width: 100vw;
+  height: calc(100vh - 40px);
+  -webkit-box-align: start !important;
+      -ms-flex-align: start !important;
+          align-items: flex-start !important;
+  padding: 0;
+}
+
+.profile--section .user--info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-column-gap: 10px;
+      grid-template-areas: "avatar name" "avatar email";
+}
+
+.profile--section .user--info #name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: name;
+  padding: 0;
+}
+
+.profile--section .user--info #email {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: email;
+  padding: 0;
+}
+
+.settings--section {
+  width: 100vw;
+  height: calc(100vh - 40px);
+  -webkit-box-align: start !important;
+      -ms-flex-align: start !important;
+          align-items: flex-start !important;
+  padding: 0;
+}
+
+.error--section {
+  width: inherit;
+  height: inherit;
+}
+
+.error--section .error--container {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+}
+
+.error--section .title {
+  color: #ed2939;
+}
+
+.error--section img {
+  width: 100px;
+}
+/*# sourceMappingURL=herocomponents.css.map */

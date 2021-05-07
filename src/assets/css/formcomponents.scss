@@ -1,0 +1,250 @@
+@font-face {
+  // Product Sans Fonts
+  src: url(../fonts/Product-Sans/Product-Sans-Regular.ttf);
+  font-family: Product-Sans;
+}
+$maxwidhthoftablet: 700px;
+@mixin tablet {
+  @media (max-width: #{$maxwidhthoftablet}) {
+    @content;
+  }
+}
+
+// Layout
+$padding: 10px;
+$borderRadius: 5px;
+$sidePaddingLarge: 0 50px;
+$sidePaddingSmall: 0 20px;
+
+// Colors
+$accentColor: #1f39eb;
+$darkAccentColor: #1830ca;
+$textColor: #fff;
+$grey: #53595c;
+$black: #11131c;
+$lightBackgroundColor: #f5f5f5;
+$red: #ed2939;
+$green: #22ff04;
+
+form {
+  // dimensions
+  width: inherit;
+
+  * {
+    // dimensions
+    width: 100%;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  grid-area: "input";
+  // dimensions
+  height: 40px;
+  width: 100%;
+  resize: none;
+  // max-width: 350px;
+  // text
+  color: $textColor;
+  line-height: 22px;
+  // design
+  padding: 0 $padding;
+  border-radius: $borderRadius;
+  border: 1px solid rgba($color: $textColor, $alpha: 0.25);
+  background: rgba($color: $lightBackgroundColor, $alpha: 0.05);
+}
+
+textarea {
+  // dimensions
+  min-height: 80px;
+}
+
+.hero > form {
+  // design
+  padding: $sidePaddingLarge;
+}
+
+.search--bar {
+  // display
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: $padding;
+  // design
+  border-radius: $borderRadius;
+  border: 1px solid rgba($color: $textColor, $alpha: 0.25);
+  background: rgba($color: $lightBackgroundColor, $alpha: 0.05);
+
+  input[type="text"] {
+    // text
+    color: $textColor;
+    font-size: 0.875rem;
+    // design
+    padding: 0 $padding;
+    border: none;
+    border-radius: $borderRadius;
+    background: transparent;
+  }
+
+  button {
+    // display
+    display: flex;
+    // design
+    padding: 0 $padding;
+    border: 0;
+    background: transparent;
+
+    box-shadow: none;
+  }
+}
+
+.add--bar {
+  // display
+  display: grid;
+  grid-template-columns: 1fr auto;
+  // grid-gap: $padding;
+  // design
+  border-radius: $borderRadius;
+  border: 1px solid rgba($color: $textColor, $alpha: 0.25);
+  background: rgba($color: $lightBackgroundColor, $alpha: 0.05);
+
+  input[type="text"] {
+    // text
+    color: $textColor;
+    font-size: 0.875rem;
+    // design
+    padding: 0 $padding;
+    border: none;
+    border-radius: $borderRadius;
+    background: transparent;
+  }
+
+  button {
+    // display
+    display: flex;
+    // design
+    padding: 0 $padding;
+    border: 0;
+    background: transparent;
+
+    box-shadow: none;
+  }
+}
+
+.form {
+  // dimensions
+  max-width: 350px;
+  // display
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $padding;
+  // text
+  color: $textColor;
+  // design
+  padding: 0 $padding !important;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .slider {
+      background-color: $accentColor;
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px $accentColor;
+    }
+
+    &:checked + .slider:before {
+      transform: translateX(20px);
+    }
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 20px;
+
+    &:before {
+      border-radius: 50%;
+    }
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.1s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.1s;
+    }
+  }
+}
+
+.preview--container {
+  // dimensions
+  width: 100%;
+  // positions
+  position: relative;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: $padding;
+  grid-template-areas: "preview";
+  align-items: center;
+
+  p.meta {
+    // design
+    padding: $padding;
+  }
+
+  img,
+  .image--preview {
+    // dimensions
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    // display
+    grid-area: "preview";
+    // design
+    border-radius: 50%;
+    border: 1px solid rgba($color: $textColor, $alpha: 0.25);
+  }
+
+  label {
+    // positions
+    position: absolute;
+    left: 100px;
+    transform-origin: center;
+    transform: translateX(-40px);
+    bottom: 0;
+    // design
+    opacity: 0.5;
+    transition: 0.2s;
+
+    &:hover {
+      // design
+      opacity: 1;
+    }
+  }
+}

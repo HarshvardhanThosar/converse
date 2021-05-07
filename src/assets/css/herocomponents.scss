@@ -1,0 +1,123 @@
+@font-face {
+  // Product Sans Fonts
+  src: url(../fonts/Product-Sans/Product-Sans-Regular.ttf);
+  font-family: Product-Sans;
+}
+$maxwidhthoftablet: 700px;
+@mixin tablet {
+  @media (max-width: #{$maxwidhthoftablet}) {
+    @content;
+  }
+}
+
+// Layout
+$padding: 10px;
+$borderRadius: 5px;
+$sidePaddingLarge: 0 50px;
+$sidePaddingSmall: 0 20px;
+
+// Colors
+$accentColor: #1f39eb;
+$darkAccentColor: #1830ca;
+$textColor: #fff;
+$grey: #53595c;
+$black: #11131c;
+$lightBackgroundColor: #f5f5f5;
+$red: #ed2939;
+$green: #22ff04;
+
+section.hero {
+  // dimensions
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  // display
+  display: grid;
+  justify-content: center; // horizontally centered
+  align-items: center; // vertically centered
+}
+
+.sub--hero {
+  // display
+  display: grid;
+  justify-content: center; // horizontally centered
+  align-items: center; // vertically centered
+}
+
+.signin--section {
+  // display
+  grid-template-columns: auto;
+  // design
+  padding: $sidePaddingLarge 10px;
+  padding-bottom: 40px;
+}
+
+.explore--section {
+  // dimensions
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.profile--section {
+  // dimensions
+  width: 100vw;
+  height: calc(100vh - 40px);
+  // display
+  align-items: flex-start !important;
+  // design
+  padding: 0;
+
+  .user--info {
+    // display
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    grid-column-gap: $padding;
+    grid-template-areas: "avatar name" "avatar email";
+
+    #name {
+      grid-area: name;
+      // design
+      padding: 0;
+    }
+
+    #email {
+      grid-area: email;
+      // design
+      padding: 0;
+    }
+  }
+}
+
+.settings--section {
+  // dimensions
+  width: 100vw;
+  height: calc(100vh - 40px);
+  // display
+  align-items: flex-start !important;
+  // design
+  padding: 0;
+}
+
+.error--section {
+  // dimensions
+  width: inherit;
+  height: inherit;
+
+  .error--container {
+    // display
+    display: grid;
+    justify-items: center;
+  }
+
+  .title {
+    // text
+    color: $red;
+  }
+
+  img {
+    width: 100px;
+  }
+}

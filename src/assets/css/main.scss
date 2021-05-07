@@ -1,0 +1,303 @@
+@font-face {
+  // Product Sans Fonts
+  src: url(../fonts/Product-Sans/Product-Sans-Regular.ttf);
+  font-family: Product-Sans;
+}
+$maxwidhthoftablet: 700px;
+@mixin tablet {
+  @media (max-width: #{$maxwidhthoftablet}) {
+    @content;
+  }
+}
+
+// Layout
+$padding: 10px;
+$borderRadius: 5px;
+$sidePaddingLarge: 0 50px;
+$sidePaddingSmall: 0 20px;
+
+// Colors
+$accentColor: #1f39eb;
+$darkAccentColor: #1830ca;
+$textColor: #fff;
+// $textColor: #000;
+$grey: #53595c;
+$black: #11131c;
+$backgroundColor: #111115;
+// $backgroundColor: #000;
+// $backgroundColor: #f5f5f5;
+// $lightBackgroundColor: #f5f5f5;
+$red: #ed2939;
+$green: #22ff04;
+
+* {
+  // positions
+  z-index: 1;
+  // font
+  color: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: inherit;
+  font-family: Product-Sans;
+  text-decoration: none;
+  list-style: none;
+  // design
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat !important;
+}
+
+::-webkit-scrollbar {
+  // display
+  display: none;
+}
+
+html,
+body {
+  // dimensions
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  // design
+  background: $backgroundColor;
+}
+
+// body {
+//   // design
+//   // background: url(../gfx/scene.png) $backgroundColor;
+//   // background-size: 150%;
+//   // background-origin: content-box;
+//   // background-position: center;
+//   // background-attachment: fixed;
+// }
+
+section.App {
+  // dimensions
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  // design
+  // background-color: rgba($color: black, $alpha: 0.5);
+  // backdrop-filter: blur(4px);
+}
+
+.loader__hero {
+  flex: 1;
+  // dimensions
+  width: 100%;
+  height: calc(100vh - 40px);
+  overflow: hidden;
+  // display
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  // design
+  margin: auto;
+  padding: $sidePaddingSmall !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  backdrop-filter: blur(5px);
+}
+
+.loader {
+  // dimensions
+  width: 30px;
+  height: 30px;
+  // design
+  border: 2px solid rgba($color: #fff, $alpha: 0.05);
+  border-radius: 50%;
+  border-top: 2px solid $accentColor;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  // text
+  color: $accentColor;
+  // color: $textColor;
+  font-size: 2.75rem;
+}
+
+.subtitle {
+  // text
+  color: $textColor;
+  padding: 14px 0;
+  font-size: 1.25rem;
+}
+
+.overflow__ellipsis {
+  // text
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.link {
+  // text
+  color: $textColor;
+  font-weight: normal;
+  padding: 10px 0;
+  font-size: 1rem;
+}
+
+.meta {
+  // text
+  color: gray;
+  padding: 10px 0;
+  font-size: 0.875rem;
+}
+
+svg {
+  // dimensions
+  font-size: 1.25rem !important;
+  line-height: 1.5rem !important;
+  height: 1.25rem !important;
+  // positions
+  position: relative !important;
+}
+
+.icon {
+  grid-area: icon;
+  // positions
+  position: relative;
+  // text
+  fill: $accentColor;
+  // design
+  box-sizing: content-box;
+
+  &.dark {
+    // text
+    fill: $black;
+  }
+
+  &.light {
+    // text
+    fill: $textColor;
+  }
+}
+
+.circle {
+  // dimensions
+  background: $backgroundColor;
+  // design
+  padding: $padding;
+  border-radius: 50%;
+  border: 1px solid rgba($color: $textColor, $alpha: 0.25);
+}
+
+.disabled {
+  // design
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.hidden {
+  // display
+  display: none;
+}
+
+.vertical--separator {
+  // dimensions
+  width: $padding;
+  height: 100%;
+}
+
+.horizontal--separator {
+  // dimensions
+  width: 100%;
+  height: $padding;
+}
+
+.scrollable {
+  &.scroll-direction-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  &.scroll-direction-y {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  &.scroll-direction-both {
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+  &::-webkit-scrollbar {
+    // dimensions
+    width: 2px;
+    height: 2px;
+    // display
+    display: block !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $grey;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $accentColor;
+  }
+}
+
+.row {
+  // display
+  display: flex;
+  flex-direction: row;
+  grid-gap: $padding;
+}
+
+// debugging divs
+.red {
+  // design
+  background: red;
+}
+
+.blue {
+  // design
+  background: blue;
+}
+
+.green {
+  // design
+  background: green;
+}
+
+.yellow {
+  // design
+  background: yellow;
+}
+
+.orange {
+  // design
+  background: orange;
+}

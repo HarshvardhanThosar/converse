@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0" r="0.897" gradientTransform="matrix(0.497, 0.868, -0.868, 0.497, 0.251, -0.434)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#404040"/>
+      <stop offset="1" stop-color="#040404"/>
+    </radialGradient>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-184 -108)">
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(184 108)" stroke="#707070" stroke-width="1" fill="url(#radial-gradient)">
+      <rect width="500" height="500" rx="50" stroke="none"/>
+      <rect x="0.5" y="0.5" width="499" height="499" rx="49.5" fill="none"/>
+    </g>
+    <path id="Path_1" data-name="Path 1" d="M314.1-51.75A160.224,160.224,0,0,1,257.85-7.875Q225.45,7.2,185.4,7.2q-36,0-66.825-13.05A166.08,166.08,0,0,1,65.25-41.4,166.08,166.08,0,0,1,29.7-94.725,168.48,168.48,0,0,1,16.65-161.1,168.48,168.48,0,0,1,29.7-227.475,166.08,166.08,0,0,1,65.25-280.8a166.08,166.08,0,0,1,53.325-35.55Q149.4-329.4,185.4-329.4q38.7,0,68.175,13.5A158.608,158.608,0,0,1,306-276.75l-42.75,41.4a114.259,114.259,0,0,0-33.075-26.55q-18.675-9.9-44.325-9.9a113.4,113.4,0,0,0-42.3,7.875,102.436,102.436,0,0,0-34.425,22.275A105.1,105.1,0,0,0,85.95-206.775Q77.4-186.3,77.4-161.1t8.55,45.675A105.1,105.1,0,0,0,109.125-80.55,102.435,102.435,0,0,0,143.55-58.275a113.4,113.4,0,0,0,42.3,7.875q27,0,47.925-11.025T270.9-92.7Z" transform="translate(268.625 519.1)" fill="#fff"/>
+  </g>
+</svg>
