@@ -52,7 +52,7 @@ export const loadLaunchConversation = ({ communityID }) => {
 export const loadLatestConversation = ({ communityID }) => {
   console.log("Trying to load new messages");
   return (dispatch, getState, { getFirestore }) => {
-    // const firestore = getFirestore();
+    const firestore = getFirestore();
     const state = getState();
     console.log(`Community ID: ${communityID}`);
 
