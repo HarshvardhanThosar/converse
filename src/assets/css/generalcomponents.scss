@@ -746,3 +746,71 @@ fieldset .tag--container {
     opacity: 1;
   }
 }
+
+.validation__tile {
+  // dimensions
+  width: 100%;
+  min-height: 40px;
+  // display
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-areas: "icon title";
+  align-items: center;
+  column-gap: $padding;
+  // design
+  background-color: transparent;
+  border: 2px solid rgba($color: $accentColor, $alpha: 0.25);
+  border-radius: $borderRadius;
+  padding: $padding;
+
+  .icon {
+    grid-area: icon;
+    // display
+    justify-self: center;
+    // desing
+  }
+
+  .title {
+    grid-area: title;
+    // text
+    font-size: 0.8rem;
+    font-weight: lighter;
+    color: rgba($textColor, 0.5);
+  }
+
+  &.error {
+    // design
+    border: 2px solid rgba($color: $red, $alpha: 0.25);
+
+    .icon {
+      fill: $red;
+    }
+  }
+
+  &.success {
+    // design
+    border: 2px solid rgba($color: $green, $alpha: 0.25);
+
+    .icon {
+      fill: $green;
+    }
+  }
+
+  &.instruction {
+    // design
+    border: 2px solid rgba($color: $accentColor, $alpha: 0.25);
+
+    .icon {
+      fill: $accentColor;
+    }
+  }
+
+  &.warning {
+    // design
+    border: 2px solid rgba($color: orange, $alpha: 0.25);
+
+    .icon {
+      fill: orange;
+    }
+  }
+}

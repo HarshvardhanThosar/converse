@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import SendIcon from "@material-ui/icons/Send";
 // Component Imports
-import { AppBarComponent, AvatarComponent } from "../GeneralComponents";
+import { AppBarComponent } from "../GeneralComponents";
 import { MessageTileComponent } from "../TileComponents";
 import { connect } from "react-redux";
 import { sendMessage } from "../../store/actions/conversation.action";
@@ -15,7 +15,10 @@ function ChatContainerHeroComponent(props) {
   const [conversation, setconversation] = useState([]);
   const [details, setdetails] = useState({});
   const [userRelation, setUserRelation] = useState(null);
-  const [messageinput, setmessageinput] = useState("");
+  const [messageInput, setMessageInput] = useState("");
+  const [sendButtonClassNames, setSendButtonClassNames] = useState(
+    "cta icon--button disabled"
+  );
   const communityID = props.communities.active;
   const latest = useRef();
 
@@ -69,13 +72,20 @@ function ChatContainerHeroComponent(props) {
   };
 
   const handleChange = (event) => {
-    setmessageinput(event.target.value);
+    setMessageInput(event.target.value);
   };
+
+  useEffect(() => {
+    messageInput
+      ? setSendButtonClassNames("cta icon--button")
+      : setSendButtonClassNames("cta icon--button disabled");
+  }, [messageInput]);
 
   const sendMessage = (event) => {
     event.preventDefault();
-    props.sendMessage({ communityID, message: messageinput });
-    setmessageinput("");
+    if (messageInput.trim())
+      props.sendMessage({ communityID, message: messageInput });
+    setMessageInput("");
     setTimeout(() => {
       latest.current.scrollIntoView({
         behavior: "smooth",
@@ -121,10 +131,14 @@ function ChatContainerHeroComponent(props) {
                   name=""
                   id="messageinput"
                   placeholder="Type here"
-                  value={messageinput}
+                  value={messageInput}
                   onChange={handleChange}
                 />
-                <button id="send" type="submit" className="cta icon--button">
+                <button
+                  id="send"
+                  type="submit"
+                  className={sendButtonClassNames}
+                >
                   <SendIcon className="icon light" />
                   Send
                 </button>

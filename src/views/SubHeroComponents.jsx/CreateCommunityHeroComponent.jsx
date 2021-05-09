@@ -9,6 +9,7 @@ import {
 import EditIcon from "@material-ui/icons/Edit";
 import { TagInputComponent } from "../FormComponents";
 import { TagBubbleComponent } from "../GeneralComponents";
+import { ValidationTileCommponent } from "../TileComponents";
 // import { currentUser, firestore } from "../../firebase";
 
 function CreateCommunityHeroComponent(props) {
@@ -23,7 +24,7 @@ function CreateCommunityHeroComponent(props) {
   const [imageFileName, setImageFileName] = useState(
     "No file selected as new diplay image."
   );
-  const allowedType = [
+  const allowedTypes = [
     "image/png",
     "image/jpeg",
     "image/jpg",
@@ -31,9 +32,10 @@ function CreateCommunityHeroComponent(props) {
     "image/svg",
     "image/ico",
   ];
+  const [success, setSuccess] = useState(null);
   const history = useHistory();
 
-  let imageHandler = (event) => {
+  const imageInputHandler = (event) => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -41,9 +43,15 @@ function CreateCommunityHeroComponent(props) {
       }
     };
     if (event.target.files.length == 1) {
-      setImageFile(event.target.files[0]);
-      setImageFileName(event.target.files[0].name);
-      reader.readAsDataURL(event.target.files[0]);
+      if (
+        allowedTypes.some((allowedFileType) => {
+          return event.target.files[0].type === allowedFileType;
+        })
+      ) {
+        setImageFile(event.target.files[0]);
+        setImageFileName(event.target.files[0].name);
+        reader.readAsDataURL(event.target.files[0]);
+      }
     }
   };
 
@@ -81,11 +89,14 @@ function CreateCommunityHeroComponent(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { communitytitle, communitydescription } = event.target.elements;
-    const title = communitytitle.value;
-    const description = communitydescription.value;
+    const title = communitytitle.value.trim();
+    const description = communitydescription.value.trim();
     props
       .createCommunity({ title, description, tagList, imageFile })
-      .then(history.push("/"));
+      .then(() => {
+        setSuccess("You have successfully created a new community");
+        history.push("/");
+      });
   };
 
   return (
@@ -113,7 +124,7 @@ function CreateCommunityHeroComponent(props) {
             id="image--input"
             className="hidden"
             accept="image/*"
-            onChange={imageHandler}
+            onChange={imageInputHandler}
           />
           <label htmlFor="image--input">
             <EditIcon className="circle icon light" />
@@ -166,6 +177,7 @@ function CreateCommunityHeroComponent(props) {
         <button type="submit" className="cta">
           Create Community
         </button>
+        {success && <ValidationTileCommponent type="error" title={success} />}
       </form>
     </section>
   );

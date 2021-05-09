@@ -37,7 +37,7 @@ function EditCommunityHeroComponent(props) {
   const [imageFileName, setImageFileName] = useState(
     "No file selected as new diplay image."
   );
-  const allowedType = [
+  const allowedTypes = [
     "image/png",
     "image/jpeg",
     "image/jpg",
@@ -55,9 +55,15 @@ function EditCommunityHeroComponent(props) {
       }
     };
     if (event.target.files.length == 1) {
-      setImageFile(event.target.files[0]);
-      setImageFileName(event.target.files[0].name);
-      reader.readAsDataURL(event.target.files[0]);
+      if (
+        allowedTypes.some((allowedFileType) => {
+          return event.target.files[0].type === allowedFileType;
+        })
+      ) {
+        setImageFile(event.target.files[0]);
+        setImageFileName(event.target.files[0].name);
+        reader.readAsDataURL(event.target.files[0]);
+      }
     }
   };
 
@@ -121,8 +127,8 @@ function EditCommunityHeroComponent(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { communitytitle, communitydescription } = event.target.elements;
-    const title = communitytitle.value;
-    const description = communitydescription.value;
+    const title = communitytitle.value.trim();
+    const description = communitydescription.value.trim();
     props
       .editCommunity({
         communityID,
