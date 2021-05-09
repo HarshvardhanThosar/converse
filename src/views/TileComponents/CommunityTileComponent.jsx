@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setActive } from "../../store/actions/community.action";
 import { loadLatestConversation } from "../../store/actions/conversation.action";
+import { loadUserDetails } from "../../store/actions/users.action";
 // Component Imports
 import { AvatarComponent } from "../GeneralComponents";
 
@@ -62,6 +63,15 @@ function CommunityTileComponent(props) {
   const [timeDistance, setTimeDistance] = useState(null);
   // Notifications
   const [notification, setNotification] = useState(null);
+  // Misc
+  const userDisplayName = (useruid) => {
+    const userDetailsDoc = `userDetails@${useruid}`;
+    if (props.users[userDetailsDoc])
+      return props.users[userDetailsDoc].displayName;
+    else {
+      props.loadUserDetails({ useruid });
+    }
+  };
   // Setting up community id
   useEffect(() => {
     setCommunityID(props.id);
@@ -93,12 +103,11 @@ function CommunityTileComponent(props) {
       });
   }, [state.conversation]);
   useEffect(() => {
-    const userDetailsDoc = `userDetails@${state.lastMessage?.sender}`;
     state.lastMessage?.sender &&
       setSender(
         state.lastMessage?.sender.toString() === props.auth.uid.toString()
           ? "You"
-          : props.users[userDetailsDoc]?.displayName
+          : userDisplayName(state.lastMessage?.sender)
       );
     setNotification(true);
   }, [state.lastMessage, props.users, props.auth.uid]);
@@ -219,6 +228,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setActive: (data) => dispatch(setActive(data)),
     loadLatestConversation: (data) => dispatch(loadLatestConversation(data)),
+    loadUserDetails: (data) => dispatch(loadUserDetails(data)),
   };
 };
 export default connect(

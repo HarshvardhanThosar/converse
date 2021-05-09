@@ -49,6 +49,14 @@ function ChatDetailsComponent(props) {
           </legend>
           <div className="user--container scrollable scroll-direction-y">
             {communityUsers?.map((user) => {
+              if (user.id === props.auth.uid)
+                return (
+                  <UserInfoTileComponent
+                    key={user.id}
+                    {...user}
+                    {...props.profile}
+                  />
+                );
               const userDetails = props.users[`userDetails@${user.id}`];
               return (
                 <UserInfoTileComponent
@@ -78,6 +86,7 @@ function ChatDetailsComponent(props) {
 }
 const mapStateToProps = (state) => {
   return {
+    profile: state.firebase.profile,
     auth: state.firebase.auth,
     communities: state.communities,
     communityDetails: state.communityDetails,
