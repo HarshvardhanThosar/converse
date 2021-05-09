@@ -1,3 +1,5 @@
+> 5864bf25a90c7fd2c1f251d72a4a9fb2721910a6 commit has broken the application. Do not use this repository unless the bug is fixed & any further announcements are made.
+
 # Converse
 
 Converse is an OpenSource Chat Application built with React, Firebase and Redux.
