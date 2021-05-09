@@ -14,23 +14,23 @@ export default function ValidationTileCommponent(props) {
     switch (props.type) {
       case "error":
         setclassNames("validation__tile error");
-        setIconElement(<ErrorOutlineIcon className="icon" />);
+        setIconElement(<ErrorOutlineIcon className="icon light" />);
         break;
       case "success":
         setclassNames("validation__tile success");
-        setIconElement(<CheckCircleOutlineIcon className="icon" />);
+        setIconElement(<CheckCircleOutlineIcon className="icon light" />);
         break;
       case "warning":
         setclassNames("validation__tile warning");
-        setIconElement(<WarningRoundedIcon className="icon" />);
+        setIconElement(<WarningRoundedIcon className="icon light" />);
         break;
       case "instruction":
         setclassNames("validation__tile instruction");
-        setIconElement(<LabelImportantRoundedIcon className="icon" />);
+        setIconElement(<LabelImportantRoundedIcon className="icon light" />);
         break;
       default:
         setclassNames("validation__tile");
-        setIconElement(<StarRoundedIcon className="icon" />);
+        setIconElement(<StarRoundedIcon className="icon light" />);
     }
   }, [props.type]);
 
