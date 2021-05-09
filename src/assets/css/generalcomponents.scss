@@ -460,6 +460,21 @@ fieldset .tag--container {
   }
 }
 
+.cartoon--container {
+  // dimensions
+  width: 100%;
+  max-width: 350px;
+  // display
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 100px;
+  }
+}
+
 .chat__tile {
   // dimensions
   width: 100%;

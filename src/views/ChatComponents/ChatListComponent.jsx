@@ -4,6 +4,10 @@ import {
   ValidationTileCommponent,
 } from "../TileComponents";
 
+const arrangeLatestFirst = (a, b) => {
+  return a.lastUpdatedAt - b.lastUpdatedAt;
+};
+
 function ChatListComponent(props) {
   let communities = props.communities.userCommunities;
   let isLoaded = props.communities.userCommunitiesLoaded;
@@ -24,6 +28,13 @@ function ChatListComponent(props) {
           })
         ) : (
           <>
+            <div className="cartoon--container">
+              <img
+                src="/assets/gfx/sad.png"
+                alt="Cartoon"
+                className="cartoon"
+              />
+            </div>
             <ValidationTileCommponent title="You have no communities linked to your profile." />
             <ValidationTileCommponent
               type="instruction"

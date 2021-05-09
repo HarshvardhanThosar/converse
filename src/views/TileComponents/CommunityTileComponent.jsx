@@ -64,12 +64,13 @@ function CommunityTileComponent(props) {
   // Notifications
   const [notification, setNotification] = useState(null);
   // Misc
-  const userDisplayName = (useruid) => {
-    const userDetailsDoc = `userDetails@${useruid}`;
-    if (props.users[userDetailsDoc])
+  const userDisplayName = async (userUID) => {
+    const userDetailsDoc = `userDetails@${userUID}`;
+    if (props.users[userDetailsDoc] === undefined) {
+      console.log(`Need to download profile data of ${userUID} user.`);
+      return userUID;
+    } else {
       return props.users[userDetailsDoc].displayName;
-    else {
-      props.loadUserDetails({ useruid });
     }
   };
   // Setting up community id
@@ -103,20 +104,23 @@ function CommunityTileComponent(props) {
       });
   }, [state.conversation]);
   useEffect(() => {
+    const userDetailsDoc = `userDetails@${state.lastMessage?.sender}`;
     state.lastMessage?.sender &&
       setSender(
         state.lastMessage?.sender.toString() === props.auth.uid.toString()
           ? "You"
-          : userDisplayName(state.lastMessage?.sender)
+          : userDisplayName(state.lastMessage?.sender).then(
+              props.users[userDetailsDoc]?.displayName
+            )
       );
     setNotification(true);
   }, [state.lastMessage, props.users, props.auth.uid]);
   useEffect(() => {
     const communityUserCol = props.users[`users@${communityID}`];
     communityUserCol &&
-      communityUserCol.forEach((user) => {
+      communityUserCol.map((user) => {
         if (user.id === props.auth.uid)
-          dispatch({
+          return dispatch({
             type: "LOAD_LOCAL_COMMUNITY_USER_RELATION",
             payload: user,
           });
