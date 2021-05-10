@@ -110,7 +110,19 @@ function ChatContainerHeroComponent(props) {
             chatBar
             closeCurrentTabHandler={closeChatSection}
           />
-          {userRelation?.left || userRelation?.removed ? (
+          {details?.isDeactivated ? (
+            <div className="cartoon--container">
+              <img
+                src="/assets/gfx/sad.webp"
+                alt="Cartoon"
+                className="cartoon"
+              />
+              <ValidationTileCommponent
+                type="warning"
+                title="The community is discontinued."
+              />
+            </div>
+          ) : userRelation?.left || userRelation?.removed ? (
             userRelation?.left ? (
               <div className="cartoon--container">
                 <img

@@ -516,7 +516,7 @@ export const editCommunity = ({
   };
 };
 
-export const deleteCommunity = ({ communityID }) => {
+export const deactivateCommunity = ({ communityID }) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const state = getState();
@@ -530,6 +530,26 @@ export const deleteCommunity = ({ communityID }) => {
       {
         isDeactivated: true,
         deactivatedOn: new Date(),
+      },
+      { merge: true }
+    );
+  };
+};
+
+export const reactivateCommunity = ({ communityID }) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const state = getState();
+    const userUID = state.firebase.auth.uid;
+
+    const communityDocRef = firestore
+      .collection("communities")
+      .doc(communityID);
+
+    return communityDocRef.set(
+      {
+        isDeactivated: false,
+        deactivatedOn: null,
       },
       { merge: true }
     );

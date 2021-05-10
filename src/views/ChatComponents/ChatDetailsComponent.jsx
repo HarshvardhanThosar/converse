@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import DeleteIcon from "@material-ui/icons/Delete";
 // Component Imports
 import { AppBarComponent } from "../GeneralComponents";
@@ -8,7 +9,10 @@ import {
   CommunityInfoTileComponent,
   UserInfoTileComponent,
 } from "../TileComponents";
-import { deleteCommunity } from "../../store/actions/community.action";
+import {
+  deactivateCommunity,
+  reactivateCommunity,
+} from "../../store/actions/community.action";
 
 function ChatDetailsComponent(props) {
   const [communityDetails, setCommunityDetails] = useState({});
@@ -37,10 +41,16 @@ function ChatDetailsComponent(props) {
     props.auth.uid === communityDetails?.createdBy && setViewerType("admin");
   }, [props.auth.uid, communityDetails]);
 
-  const onDelete = (event) => {
+  const onDeactivate = (event) => {
     props
-      .deleteCommunity({ communityID })
+      .deactivateCommunity({ communityID })
       .then(console.log(`${communityID} deactivated`));
+  };
+
+  const onReactivate = (event) => {
+    props
+      .reactivateCommunity({ communityID })
+      .then(console.log(`${communityID} reactivated`));
   };
 
   return (
@@ -80,16 +90,26 @@ function ChatDetailsComponent(props) {
           </fieldset>
         )}
 
-        {viewerType === "admin" && (
-          <button
-            type="button"
-            className="cta--danger icon--button"
-            onClick={onDelete}
-          >
-            <DeleteIcon className="icon light" />
-            Deactivate Community
-          </button>
-        )}
+        {viewerType === "admin" &&
+          (communityDetails?.isDeactivated ? (
+            <button
+              type="button"
+              className="cta icon--button"
+              onClick={onReactivate}
+            >
+              <CheckCircleOutlineIcon className="icon light" />
+              Reactivate Community
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="cta--danger icon--button"
+              onClick={onDeactivate}
+            >
+              <DeleteIcon className="icon light" />
+              Deactivate Community
+            </button>
+          ))}
       </div>
     </div>
   );
@@ -105,7 +125,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteCommunity: (data) => dispatch(deleteCommunity(data)),
+    deactivateCommunity: (data) => dispatch(deactivateCommunity(data)),
+    reactivateCommunity: (data) => dispatch(reactivateCommunity(data)),
   };
 };
 export default connect(
