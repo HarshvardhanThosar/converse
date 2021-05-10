@@ -1,11 +1,3 @@
-Commit ref: https://github.com/HarshvardhanThosar/Converse/commit/5864bf25a90c7fd2c1f251d72a4a9fb2721910a6
-
-> **WARNING:** Above stated commit has broken the application. Do not use this repository unless the bug is fixed & any further announcements are made.
-
-Issue ref: https://github.com/HarshvardhanThosar/Converse/issues/4
-
----
-
 # Converse
 
 Converse is an OpenSource Chat Application built with React, Firebase and Redux.
