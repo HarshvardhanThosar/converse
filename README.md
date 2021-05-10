@@ -23,7 +23,7 @@ _or_
 yarn install
 ```
 
-the above line would install all the required node modules and packages for this project to run.
+the above line would install all the required node modules / packages for this project to run.
 
 ### 2. Create _.env.local_ file on the **root** directory of the downloaded project
 
