@@ -1,6 +1,8 @@
-# Converse
+<img src="https://github.com/HarshvardhanThosar/SourceMediaFiles/blob/master/converse/GfxSources/banner.png" alt="converse banner">
 
-Converse is an OpenSource Chat Application built with React, Firebase and Redux.
+# converse
+
+**converse** is an OpenSource Chat Application built with React, Firebase and Redux.
 
 It provides a headstart to create your own chat application.
 
