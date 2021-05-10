@@ -119,7 +119,7 @@ function ChatContainerHeroComponent(props) {
               />
               <ValidationTileCommponent
                 type="warning"
-                title="The community is discontinued."
+                title="The community is deactivated."
               />
             </div>
           ) : userRelation?.left || userRelation?.removed ? (
