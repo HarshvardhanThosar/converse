@@ -107,6 +107,14 @@ section.chat--section {
   padding: 0 10px;
 }
 
+.chat--container .content .cartoon--container {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .chat--container .content .chat {
   width: 100%;
   height: auto;

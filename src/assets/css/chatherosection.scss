@@ -114,6 +114,11 @@ section.chat--section {
     // design
     padding: 0 $padding;
 
+    .cartoon--container {
+      justify-self: center;
+      align-self: center;
+    }
+
     .chat {
       // dimensions
       width: 100%;

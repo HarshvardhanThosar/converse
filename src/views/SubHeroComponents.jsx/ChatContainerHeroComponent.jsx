@@ -4,7 +4,10 @@ import AttachFileIcon from "@material-ui/icons/AttachFile";
 import SendIcon from "@material-ui/icons/Send";
 // Component Imports
 import { AppBarComponent } from "../GeneralComponents";
-import { MessageTileComponent } from "../TileComponents";
+import {
+  MessageTileComponent,
+  ValidationTileCommponent,
+} from "../TileComponents";
 import { connect } from "react-redux";
 import { sendMessage } from "../../store/actions/conversation.action";
 import { ChatDetailsComponent } from "../ChatComponents";
@@ -23,9 +26,8 @@ function ChatContainerHeroComponent(props) {
   const latest = useRef();
 
   const [detailsTabOpen, setDetailsTabOpen] = useState(false);
-  const [chatContainerClassNames, setChatContainerClassNames] = useState(
-    "chat--container"
-  );
+  const [chatContainerClassNames, setChatContainerClassNames] =
+    useState("chat--container");
   const openDetailsTab = () => {
     console.log(`Details tab opened.`);
     setDetailsTabOpen(true);
@@ -109,7 +111,33 @@ function ChatContainerHeroComponent(props) {
             closeCurrentTabHandler={closeChatSection}
           />
           {userRelation?.left || userRelation?.removed ? (
-            <div>Hey</div>
+            userRelation?.left ? (
+              <div className="cartoon--container">
+                <img
+                  src="/assets/gfx/sad.webp"
+                  alt="Cartoon"
+                  className="cartoon"
+                />
+                <ValidationTileCommponent
+                  type="warning"
+                  title="You can not view this section because you left this community."
+                />
+              </div>
+            ) : (
+              userRelation?.removed && (
+                <div className="cartoon--container">
+                  <img
+                    src="/assets/gfx/sad.webp"
+                    alt="Cartoon"
+                    className="cartoon"
+                  />
+                  <ValidationTileCommponent
+                    type="error"
+                    title="You can not view this section because you were removed from the community"
+                  />
+                </div>
+              )
+            )
           ) : (
             <>
               <div className="chat scrollable scroll-direction-y">

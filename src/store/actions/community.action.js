@@ -555,6 +555,8 @@ export const joinCommunity = ({ communityID }) => {
         {
           joinedAt: new Date(),
           userType: "user",
+          removed: false,
+          left: false,
           // Add more details as per your need
         },
         { merge: true }

@@ -7,7 +7,10 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 // Component Imports
 import { AvatarComponent, TagBubbleComponent } from "../GeneralComponents";
 import { connect } from "react-redux";
-import { leaveCommunity } from "../../store/actions/community.action";
+import {
+  joinCommunity,
+  leaveCommunity,
+} from "../../store/actions/community.action";
 
 function CommunityInfoTileComponent(props) {
   const history = useHistory();
@@ -27,6 +30,10 @@ function CommunityInfoTileComponent(props) {
 
   const handleLeave = () => {
     props.leaveCommunity({ communityID }).then(history.push("/"));
+  };
+
+  const handleJoin = () => {
+    props.joinCommunity({ communityID }).then(history.push("/"));
   };
 
   return (
@@ -64,6 +71,14 @@ function CommunityInfoTileComponent(props) {
             <Link to="/editCommunity">
               <button>Edit Community</button>
             </Link>
+          ) : props.userRelation?.removed ? (
+            <button className="cta" onClick={handleJoin}>
+              Rejoin Community
+            </button>
+          ) : props.userRelation.left ? (
+            <button className="cta" onClick={handleJoin}>
+              Rejoin Community
+            </button>
           ) : (
             <button className="cta--danger" onClick={handleLeave}>
               Leave Community
@@ -98,6 +113,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
+    joinCommunity: (data) => dispatch(joinCommunity(data)),
     leaveCommunity: (data) => dispatch(leaveCommunity(data)),
   };
 };

@@ -15,6 +15,15 @@ function ChatDetailsComponent(props) {
   const [communityUsers, setCommunityUsers] = useState([]);
   const communityID = props.communities.active;
   const [viewerType, setViewerType] = useState("user");
+  const [userRelation, setUserRelation] = useState(null);
+
+  const communityUserCol = props.users[`users@${communityID}`];
+  useEffect(() => {
+    communityUserCol &&
+      communityUserCol.forEach((user) => {
+        user.id === props.auth.uid && setUserRelation(user);
+      });
+  }, [communityUserCol]);
 
   useEffect(() => {
     setCommunityDetails(props.communityDetails[`details@${communityID}`]);
@@ -42,7 +51,10 @@ function ChatDetailsComponent(props) {
         closeCurrentTabHandler={props.closeCurrentTabHandler}
       />
       <div className="details--container">
-        <CommunityInfoTileComponent {...communityDetails} />
+        <CommunityInfoTileComponent
+          {...communityDetails}
+          userRelation={userRelation}
+        />
         <fieldset>
           <legend>
             <h1 className="meta">Users ● {communityUsers.length}</h1>
@@ -80,6 +92,7 @@ const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
     communities: state.communities,
+    users: state.users,
     communityDetails: state.communityDetails,
     users: state.users,
   };
