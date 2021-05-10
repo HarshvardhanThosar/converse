@@ -13,6 +13,17 @@ export const loadCommunityUsers = ({ communityID }) => {
         let dataRetrieved = [];
         snapshot.docs.map((doc) => {
           const data = { ...doc.data(), id: doc.id };
+          firestore
+            .collection(`users`)
+            .doc(doc.id)
+            .get()
+            .then((doc) => {
+              dispatch({
+                type: "LOAD_USER_DETAILS",
+                id: doc.id,
+                data: doc.data(),
+              });
+            });
           return dataRetrieved.push(data);
         });
         dispatch({
@@ -21,34 +32,6 @@ export const loadCommunityUsers = ({ communityID }) => {
           data: dataRetrieved,
         });
       });
-    }
-  };
-};
-
-export const loadUserDetails = ({ userUID }) => {
-  return (dispatch, getState, { getFirestore }) => {
-    const firestore = getFirestore();
-    const state = getState();
-
-    const loggedInUser = state.firebase.auth.uid;
-    const userDetails = state.users[`userDetails@${userUID}`];
-
-    // // Check if details of this user is loaded
-    if (userDetails !== undefined) {
-      console.log(`User ${userUID}'s data is already loaded`);
-    } else {
-      firestore
-        .collection(`users`)
-        .doc(userUID)
-        .get()
-        .then((doc) => {
-          const data = doc.data();
-          dispatch({
-            type: "LOAD_USER_DETAILS",
-            id: userUID,
-            data,
-          });
-        });
     }
   };
 };

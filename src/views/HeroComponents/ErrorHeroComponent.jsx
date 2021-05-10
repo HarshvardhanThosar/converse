@@ -5,7 +5,7 @@ export default function ErrorHeroComponent(props) {
         <h1 className="title">Error!</h1>
         <h2 className="meta">Those Aliens Stole This Page Again!</h2>
         <div className="cartoon--container">
-          <img src="/assets/gfx/angry.png" alt="Cartoon" className="cartoon" />
+          <img src="/assets/gfx/angry.webp" alt="Cartoon" className="cartoon" />
         </div>
       </div>
     </section>

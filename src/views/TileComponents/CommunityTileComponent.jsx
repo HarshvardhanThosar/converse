@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setActive } from "../../store/actions/community.action";
 import { loadLatestConversation } from "../../store/actions/conversation.action";
-import { loadUserDetails } from "../../store/actions/users.action";
 // Component Imports
 import { AvatarComponent } from "../GeneralComponents";
 
@@ -52,6 +51,7 @@ function CommunityTileComponent(props) {
   );
   // Previewed message details
   const [sender, setSender] = useState("");
+  const [senderProfileData, setSenderProfileData] = useState(null);
   const [subtitle, setSubtitle] = useState("");
   const [subtitleClassNames, setSubtitleClassNames] = useState(
     "overflow__ellipsis skeleton--loader"
@@ -63,16 +63,6 @@ function CommunityTileComponent(props) {
   const [timeDistance, setTimeDistance] = useState(null);
   // Notifications
   const [notification, setNotification] = useState(null);
-  // Misc
-  const userDisplayName = async (userUID) => {
-    const userDetailsDoc = `userDetails@${userUID}`;
-    if (props.users[userDetailsDoc] === undefined) {
-      console.log(`Need to download profile data of ${userUID} user.`);
-      return userUID;
-    } else {
-      return props.users[userDetailsDoc].displayName;
-    }
-  };
   // Setting up community id
   useEffect(() => {
     setCommunityID(props.id);
@@ -109,9 +99,7 @@ function CommunityTileComponent(props) {
       setSender(
         state.lastMessage?.sender.toString() === props.auth.uid.toString()
           ? "You"
-          : userDisplayName(state.lastMessage?.sender).then(
-              props.users[userDetailsDoc]?.displayName
-            )
+          : props.users[userDetailsDoc]?.displayName
       );
     setNotification(true);
   }, [state.lastMessage, props.users, props.auth.uid]);
@@ -232,7 +220,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setActive: (data) => dispatch(setActive(data)),
     loadLatestConversation: (data) => dispatch(loadLatestConversation(data)),
-    loadUserDetails: (data) => dispatch(loadUserDetails(data)),
   };
 };
 export default connect(

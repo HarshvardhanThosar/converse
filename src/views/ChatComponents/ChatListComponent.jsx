@@ -30,7 +30,7 @@ function ChatListComponent(props) {
           <>
             <div className="cartoon--container">
               <img
-                src="/assets/gfx/sad.png"
+                src="/assets/gfx/sad.webp"
                 alt="Cartoon"
                 className="cartoon"
               />
