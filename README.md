@@ -51,7 +51,7 @@ Add your Firebase porject's configuration onto the right hand side of the respec
 
 ### 3. Setup is complete
 
-With the above to steps done correctly, you are good to go with running your own converse chat application.
+With the above two steps done correctly, you are good to go with running your own converse chat application.
 
 However,
 
