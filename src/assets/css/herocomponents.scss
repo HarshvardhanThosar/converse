@@ -50,6 +50,11 @@ section.hero {
   // design
   padding: $sidePaddingLarge 10px;
   padding-bottom: 40px;
+  background: url(../gfx/scene.webp);
+  background-size: 25%;
+  background-origin: content-box;
+  background-position: bottom;
+  background-attachment: fixed;
 }
 
 .explore--section {
