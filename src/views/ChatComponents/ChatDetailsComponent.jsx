@@ -55,25 +55,31 @@ function ChatDetailsComponent(props) {
           {...communityDetails}
           userRelation={userRelation}
         />
-        <fieldset>
-          <legend>
-            <h1 className="meta">Users ● {communityUsers.length}</h1>
-          </legend>
-          <div className="user--container scrollable scroll-direction-y">
-            {communityUsers?.map((user) => {
-              const userDetails = props.users[`userDetails@${user.id}`];
-              return (
-                <UserInfoTileComponent
-                  key={user.id}
-                  {...user}
-                  {...userDetails}
-                  viewerType={viewerType}
-                  communityid={communityID}
-                />
-              );
-            })}
-          </div>
-        </fieldset>
+        {!userRelation?.removed && !userRelation?.left && (
+          <fieldset>
+            <legend>
+              <h1 className="meta">Users</h1>
+            </legend>
+            <div className="user--container scrollable scroll-direction-y">
+              {communityUsers?.map((user) => {
+                if (!user?.removed && !user?.left) {
+                  const userDetails = props.users[`userDetails@${user.id}`];
+                  return (
+                    <UserInfoTileComponent
+                      key={user.id}
+                      {...user}
+                      {...userDetails}
+                      viewerType={viewerType}
+                      communityid={communityID}
+                    />
+                  );
+                }
+                return;
+              })}
+            </div>
+          </fieldset>
+        )}
+
         {viewerType === "admin" && (
           <button
             type="button"
