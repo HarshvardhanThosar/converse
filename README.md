@@ -11,7 +11,7 @@ It provides a headstart to create your own chat application.
 ### 1. Download the complete project
 
 Download the complete project and open it in your IDE of choice.
-Then open the terminal section of IDE and enter either of the following lines and hit "enter".
+Then open the terminal section of IDE and enter either of the following lines and hit "enter" to proceed.
 
 ```
 npm install
@@ -23,7 +23,7 @@ _or_
 yarn install
 ```
 
-the above line would install all the required node modules / packages for this project to run.
+The above line would install all the required node modules / packages for this project to run.
 
 ### 2. Create _.env.local_ file on the **root** directory of the downloaded project
 
