@@ -47,7 +47,7 @@ REACT_APP_FIREBASE_APP_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE APP ID
 REACT_APP_FIREBASE_MEASUREMENT_ID = REPLACE THIS COMMENT WITH YOUR FIREBASE MEASUREMENT ID
 ```
 
-Add your firebase porject's configuration onto the right hand side of the '=' in the above lines.
+Add your Firebase porject's configuration onto the right hand side of the respective variables.
 
 ### 3. Setup is complete
 
