@@ -2,7 +2,7 @@
 
 # converse
 
-**converse** is an OpenSource Chat Application built with React, Firebase and Redux.
+**converse** is an OpenSource Chat Application built with React, Redux and Firebase.
 
 It provides a headstart to create your own chat application.
 
