@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getFirestore } from "redux-firestore";
 import { joinCommunity } from "../../store/actions/community.action";
-import { ValidationTileCommponent } from "../TileComponents";
+import { ValidationTileComponent } from "../TileComponents";
 
 function JoinCommunityHeroComponent(props) {
   const history = useHistory();
@@ -90,9 +90,9 @@ function JoinCommunityHeroComponent(props) {
         <button type="submit" className="cta">
           Join Community
         </button>
-        {warning && <ValidationTileCommponent type="warning" title={warning} />}
-        {error && <ValidationTileCommponent type="error" title={error} />}
-        {success && <ValidationTileCommponent type="error" title={success} />}
+        {warning && <ValidationTileComponent type="warning" title={warning} />}
+        {error && <ValidationTileComponent type="error" title={error} />}
+        {success && <ValidationTileComponent type="error" title={success} />}
       </form>
     </section>
   );

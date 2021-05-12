@@ -5,7 +5,7 @@ import LabelImportantRoundedIcon from "@material-ui/icons/LabelImportantRounded"
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import { useEffect, useState } from "react";
 
-export default function ValidationTileCommponent(props) {
+export default function ValidationTileComponent(props) {
   const [classNames, setclassNames] = useState("validation__tile");
   const [iconElement, setIconElement] = useState(props.icon);
   const [title, setTitle] = useState("");

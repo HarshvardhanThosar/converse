@@ -6,7 +6,7 @@ import SendIcon from "@material-ui/icons/Send";
 import { AppBarComponent } from "../GeneralComponents";
 import {
   MessageTileComponent,
-  ValidationTileCommponent,
+  ValidationTileComponent,
 } from "../TileComponents";
 import { connect } from "react-redux";
 import { sendMessage } from "../../store/actions/conversation.action";
@@ -117,7 +117,7 @@ function ChatContainerHeroComponent(props) {
                 alt="Cartoon"
                 className="cartoon"
               />
-              <ValidationTileCommponent
+              <ValidationTileComponent
                 type="warning"
                 title="The community is deactivated."
               />
@@ -130,7 +130,7 @@ function ChatContainerHeroComponent(props) {
                   alt="Cartoon"
                   className="cartoon"
                 />
-                <ValidationTileCommponent
+                <ValidationTileComponent
                   type="warning"
                   title="You can not view this section because you left this community."
                 />
@@ -143,7 +143,7 @@ function ChatContainerHeroComponent(props) {
                     alt="Cartoon"
                     className="cartoon"
                   />
-                  <ValidationTileCommponent
+                  <ValidationTileComponent
                     type="error"
                     title="You can not view this section because you were removed from the community"
                   />

@@ -9,7 +9,7 @@ import {
 import EditIcon from "@material-ui/icons/Edit";
 import { TagInputComponent } from "../FormComponents";
 import { TagBubbleComponent } from "../GeneralComponents";
-import { ValidationTileCommponent } from "../TileComponents";
+import { ValidationTileComponent } from "../TileComponents";
 // import { currentUser, firestore } from "../../firebase";
 
 function CreateCommunityHeroComponent(props) {
@@ -177,7 +177,7 @@ function CreateCommunityHeroComponent(props) {
         <button type="submit" className="cta">
           Create Community
         </button>
-        {success && <ValidationTileCommponent type="error" title={success} />}
+        {success && <ValidationTileComponent type="error" title={success} />}
       </form>
     </section>
   );

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
   CommunityTileComponent,
-  ValidationTileCommponent,
+  ValidationTileComponent,
 } from "../TileComponents";
 
 const arrangeLatestFirst = (a, b) => {
@@ -35,12 +35,12 @@ function ChatListComponent(props) {
                 className="cartoon"
               />
             </div>
-            <ValidationTileCommponent title="You have no communities linked to your profile." />
-            <ValidationTileCommponent
+            <ValidationTileComponent title="You have no communities linked to your profile." />
+            <ValidationTileComponent
               type="instruction"
               title="Join or create communities and connect to other people with similar interests."
             />
-            <ValidationTileCommponent
+            <ValidationTileComponent
               type="instruction"
               title="Use the explore page to find interesting communities."
             />
