@@ -99,6 +99,35 @@ textarea {
   }
 }
 
+.advance--search--bar {
+  // display
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: $padding;
+  // design
+  border-radius: $borderRadius;
+
+  input[type="text"] {
+    // text
+    color: $textColor;
+    font-size: 0.875rem;
+    // design
+    padding: 0 $padding;
+    border-radius: $borderRadius;
+  }
+
+  button {
+    // display
+    display: flex;
+    // design
+    padding: 0 $padding;
+    border: 0;
+    background: transparent;
+
+    box-shadow: none;
+  }
+}
+
 .add--bar {
   // display
   display: grid;

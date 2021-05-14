@@ -43,6 +43,25 @@ section.hero {
 .explore--section {
   max-width: 100%;
   max-height: 100%;
+  padding: 10px;
+}
+
+.explore--section .community--container {
+  width: 100%;
+  max-height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.explore--section .community--container .community__info__tile {
+  width: 350px;
 }
 
 .profile--section {

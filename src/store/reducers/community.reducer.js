@@ -1,5 +1,6 @@
 const initState = {
   active: null,
+  searchResults: [],
   userCommunities: [],
   userCommunitiesLoaded: false,
 };
@@ -19,6 +20,16 @@ const communityReducer = (state = initState, action) => {
       return {
         ...state,
         active: action.communityID,
+      };
+    case "SET_COMMUNITY_SEARCH_RESULTS": // Setting up search results
+      return {
+        ...state,
+        searchResults: action.searchResults,
+      };
+    case "RESET_COMMUNITY_SEARCH_RESULTS": // Resetting up search results
+      return {
+        ...state,
+        searchResults: [],
       };
     default:
       // Default case //

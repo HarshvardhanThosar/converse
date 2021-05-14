@@ -196,13 +196,6 @@ export const createCommunity = ({ title, description, tagList, imageFile }) => {
                       tagName: tag.tagName,
                     });
                     tagIDList.push(doc.id);
-                    // communityDocRef.collection(`tags`).doc(doc.id).set(
-                    //   {
-                    //     tagID: doc.id,
-                    //     tagName: tag.tagName,
-                    //   },
-                    //   { merge: true }
-                    // );
 
                     communityDocRef
                       .update({
@@ -245,13 +238,6 @@ export const createCommunity = ({ title, description, tagList, imageFile }) => {
                           tagName: tag.tagName,
                         });
                         tagIDList.push(docRef.id);
-                        // communityDocRef.collection(`tags`).doc(tag.docID).set(
-                        //   {
-                        //     tagID: tag.docID,
-                        //     tagName: tag.tagName,
-                        //   },
-                        //   { merge: true }
-                        // );
 
                         communityDocRef
                           .update({
@@ -282,21 +268,6 @@ export const createCommunity = ({ title, description, tagList, imageFile }) => {
                       .catch((error) => {
                         console.error(`Error while creating tag: ${error}`);
                       });
-
-                    // communityDocRef
-                    //   .update({
-                    //     tags: firebase.firestore.FieldValue.arrayUnion(
-                    //       ...tagIDList
-                    //     ),
-                    //   })
-                    //   .then(
-                    //     console.log(
-                    //       `${communityID} community got updated with latest tags`
-                    //     )
-                    //   )
-                    //   .catch((error) => console.error(error));
-
-                    // console.log(verifiedTagList);
                   }
                 })
                 .catch((error) => {
@@ -313,11 +284,6 @@ export const createCommunity = ({ title, description, tagList, imageFile }) => {
       .catch((error) => {
         console.error(`Error occured while creating community: ${error}`);
       });
-
-    // 2. Check if "taglist" exists, if not skip to step 5 else if taglist has value continue to step 3.
-    // 3. For all element in the "taglist", if "id" exists then goto to the document with the same "id" ( inside "tags" collection ) and add the "document id" of community created is step 1.
-    // 4. For all elements in the "taglist", if "id" does not exist then create a document of the tag in "tags" collection with "title" as "title" of the tag element and an array of "commuities" containing above created community's "id" as an array item.
-    // 5.
   };
 };
 
@@ -420,32 +386,6 @@ export const editCommunity = ({
                       tagName: tag.tagName,
                     });
                     tagIDList.push(doc.id);
-
-                    // communityDocRef
-                    //   .update({
-                    //     tags: firebase.firestore.FieldValue.arrayUnion({
-                    //       id: doc.id,
-                    //       tagName: tag.tagName,
-                    //     }),
-                    //   })
-                    //   .then(
-                    //     console.log(
-                    //       `${communityID} community got updated with latest tags`
-                    //     )
-                    //   )
-                    //   .catch((error) => console.error(error));
-
-                    // tagsColRef
-                    //   .doc(doc.id)
-                    //   .collection("communities")
-                    //   .doc(communityID)
-                    //   .set({ communityID }, { merge: true })
-                    //   .then(
-                    //     console.log(
-                    //       `${communityID} community got associated with tag ${tag.tagName}`
-                    //     )
-                    //   )
-                    //   .catch((error) => console.error(error));
                   });
 
                   // If no documents were retrieved with such tagname, create a new tag
@@ -508,11 +448,6 @@ export const editCommunity = ({
       .catch((error) => {
         console.error(`Error occured while creating community: ${error}`);
       });
-
-    // 2. Check if "taglist" exists, if not skip to step 5 else if taglist has value continue to step 3.
-    // 3. For all element in the "taglist", if "id" exists then goto to the document with the same "id" ( inside "tags" collection ) and add the "document id" of community created is step 1.
-    // 4. For all elements in the "taglist", if "id" does not exist then create a document of the tag in "tags" collection with "title" as "title" of the tag element and an array of "commuities" containing above created community's "id" as an array item.
-    // 5.
   };
 };
 
@@ -811,6 +746,85 @@ export const removeUser = ({ userUID, communityID }) => {
           `Error occured while removing user from community: ${error}`
         );
       });
+  };
+};
+
+export const searchCommunity = ({ searchKey, searchFilter }) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    console.log(`Search filter is ${searchFilter}`);
+    console.log(`Search key is ${searchKey}`);
+
+    const searchResults = [];
+
+    switch (searchFilter) {
+      case "title":
+        return firestore
+          .collection("communities")
+          .where("title", "==", `${searchKey}`)
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              searchResults.push({ ...doc.data(), id: doc.id });
+            });
+            dispatch({
+              type: "SET_COMMUNITY_SEARCH_RESULTS",
+              searchResults,
+            });
+          })
+          .catch((error) => console.error(error));
+      case "tag":
+        return firestore
+          .collection("tags")
+          .where("tagName", "==", `${searchKey}`)
+          .get()
+          .then((snapshot) => {
+            let communities = [];
+            snapshot.forEach((doc) => {
+              let data = doc.data();
+              firestore
+                .collection("tags")
+                .doc(doc.id)
+                .collection("communities")
+                .get()
+                .then((snapshot) => {
+                  snapshot.forEach((doc) => {
+                    communities.push({ ...doc.data(), id: doc.id });
+                  });
+
+                  communities?.length &&
+                    communities.map((community) => {
+                      return firestore
+                        .collection(`communities`)
+                        .doc(community.communityID)
+                        .get()
+                        .then((doc) => {
+                          searchResults.push({ ...doc.data(), id: doc.id });
+                          dispatch({
+                            type: "SET_COMMUNITY_SEARCH_RESULTS",
+                            searchResults,
+                          });
+                        });
+                    });
+                });
+            });
+            dispatch({
+              type: "SET_COMMUNITY_SEARCH_RESULTS",
+              searchResults,
+            });
+          })
+          .catch((error) => console.error(error));
+      default:
+        return;
+    }
+  };
+};
+
+export const resetSearchedCommunity = () => {
+  return (dispatch, getState, { getFirestore }) => {
+    return dispatch({
+      type: "RESET_COMMUNITY_SEARCH_RESULTS",
+    });
   };
 };
 

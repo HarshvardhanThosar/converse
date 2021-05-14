@@ -272,7 +272,6 @@ fieldset .tag--container {
   border-radius: 5px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  background: #fff;
   background: #151515;
   border: 1px solid rgba(255, 255, 255, 0.25);
   -webkit-transition: 0.2s right;

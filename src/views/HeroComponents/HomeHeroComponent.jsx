@@ -65,10 +65,15 @@ function HomeHeroComponent(props) {
       <section className="hero chat--section" id="chat--section">
         <ChatNavListComponent />
         <Switch>
-          {/* <Route exact path="/" component={ExploreComponent} /> */}
-          <Route exact path="/" />
+          <Route exact path="/" component={ExploreComponent} />
+          {/* <Route exact path="/" /> */}
           <Route exact path="/chat" component={ChatContainerHeroComponent} />
           <Route path="/explore" component={ExploreComponent} />
+          <Route
+            exact
+            path="/explore/:filter/:refid/:title"
+            component={ExploreComponent}
+          />
           <Route
             exact
             path="/createCommunity"

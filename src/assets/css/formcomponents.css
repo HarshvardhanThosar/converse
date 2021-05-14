@@ -66,6 +66,33 @@ textarea {
           box-shadow: none;
 }
 
+.advance--search--bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 1fr auto;
+      grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.advance--search--bar input[type="text"] {
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.advance--search--bar button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .add--bar {
   display: -ms-grid;
   display: grid;

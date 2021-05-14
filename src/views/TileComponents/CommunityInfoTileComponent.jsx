@@ -75,7 +75,7 @@ function CommunityInfoTileComponent(props) {
             <button className="cta" onClick={handleJoin}>
               Rejoin Community
             </button>
-          ) : props.userRelation.left ? (
+          ) : props.userRelation?.left ? (
             <button className="cta" onClick={handleJoin}>
               Rejoin Community
             </button>
@@ -85,7 +85,9 @@ function CommunityInfoTileComponent(props) {
             </button>
           )
         ) : (
-          <button className="cta">Join Community</button>
+          <button className="cta" onClick={handleJoin}>
+            Join Community
+          </button>
         )}
         <button
           className="icon--only"

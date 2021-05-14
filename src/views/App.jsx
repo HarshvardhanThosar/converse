@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Component Imports
 import {
   ErrorHeroComponent,
-  ExploreComponent,
   HomeHeroComponent,
   ProfileHeroComponent,
   SettingsHeroComponent,
@@ -18,7 +17,11 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeHeroComponent} />
           <Route exact path="/chat" component={HomeHeroComponent} />
-          <Route path="/explore" component={ExploreComponent} />
+          <Route path="/explore" component={HomeHeroComponent} />
+          <Route
+            path="/explore/:filter/:refid/:title"
+            component={HomeHeroComponent}
+          />
           <Route exact path="/joinCommunity" component={HomeHeroComponent} />
           <Route
             path="/joinCommunity/:communityID"

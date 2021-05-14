@@ -61,6 +61,23 @@ section.hero {
   // dimensions
   max-width: 100%;
   max-height: 100%;
+  // design
+  padding: $padding;
+
+  .community--container {
+    // dimensions
+    width: 100%;
+    max-height: auto;
+    // display
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .community__info__tile {
+      // dimensions
+      width: 350px;
+    }
+  }
 }
 
 .profile--section {
