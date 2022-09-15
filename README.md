@@ -27,7 +27,7 @@ The above line would install all the required node modules / packages for this p
 
 ### 2. Create _.env.local_ file on the **root** directory of the downloaded project
 
-Make sure to create _.env.locale_ file before trying to run the application. This is to link the project with your Firebase project.
+Make sure to create _.env.local_ file before trying to run the application. This is to link the project with your Firebase project.
 
 Copy the following lines and paste it inside the file.
 
